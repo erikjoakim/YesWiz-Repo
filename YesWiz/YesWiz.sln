@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YesWiz.Plugins", "YesWiz.Plugins.csproj", "{DE04BA98-A966-C7B2-22C6-1AFFEC0CCA26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YesWiz", "YesWiz.csproj", "{828AE58A-2730-3B44-FF23-9B527B807C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YesWiz.Editor.Plugins", "YesWiz.Editor.Plugins.csproj", "{45106CF5-5E46-76ED-5D3C-9310942DE2C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE04BA98-A966-C7B2-22C6-1AFFEC0CCA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE04BA98-A966-C7B2-22C6-1AFFEC0CCA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE04BA98-A966-C7B2-22C6-1AFFEC0CCA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE04BA98-A966-C7B2-22C6-1AFFEC0CCA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828AE58A-2730-3B44-FF23-9B527B807C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828AE58A-2730-3B44-FF23-9B527B807C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828AE58A-2730-3B44-FF23-9B527B807C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828AE58A-2730-3B44-FF23-9B527B807C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45106CF5-5E46-76ED-5D3C-9310942DE2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45106CF5-5E46-76ED-5D3C-9310942DE2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45106CF5-5E46-76ED-5D3C-9310942DE2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45106CF5-5E46-76ED-5D3C-9310942DE2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
