@@ -241,6 +241,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AgentDetector.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\HandleInput.cs" />

@@ -21,7 +21,6 @@ public class HandleInput: MonoBehaviour {
 	void Update () {
         Interactable currentInteractable;
         RaycastHit hit;
-        MeshRenderer meshRenderer;
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
         {
@@ -36,9 +35,7 @@ public class HandleInput: MonoBehaviour {
                 else
                 {
                     selectedInteractable = currentInteractable;
-                    meshRenderer = selectedInteractable.gameObject.GetComponent<MeshRenderer>();
-                    originalColor = meshRenderer.material.color;
-                    meshRenderer.material.SetColor("_Color", Color.cyan);
+                    selectedInteractable.onMouseEnterMe();
                     handleInputEV(hit.collider.gameObject, true);
                 }
             }
@@ -46,8 +43,7 @@ public class HandleInput: MonoBehaviour {
             {
                 if (selectedInteractable != null)
                 {
-                    meshRenderer = selectedInteractable.gameObject.GetComponent<MeshRenderer>();
-                    meshRenderer.material.color = originalColor;
+                    selectedInteractable.onMouseExitMe();
                     selectedInteractable = null;
                 }
                 gameObj.transform.position = hit.point;
