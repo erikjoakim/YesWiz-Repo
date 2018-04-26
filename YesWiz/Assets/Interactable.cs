@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
+    public float stopDistance;
     Renderer rend;
     Color originalColor;
+
     private void Start()
     {
         
@@ -16,12 +18,16 @@ public class Interactable : MonoBehaviour {
         }
         originalColor = rend.material.color;
     }
-    public void onMouseEnterMe()
+    public void onGotFocus()
     {
         rend.material.SetColor("_Color", Color.cyan);
     }
-    public void onMouseExitMe()
+    public void onLostFocus()
     {
         rend.material.color = originalColor;
+    }
+    public void onFocus()
+    {
+        
     }
 }

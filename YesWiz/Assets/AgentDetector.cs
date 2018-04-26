@@ -8,6 +8,8 @@ public class AgentDetector : MonoBehaviour {
     NavMeshAgent agent;
     GameObject target;
     Vector3 homePosition;
+    Interactable interactable;
+    
     [SerializeField] float stopChaseDistance= 10f;
     [SerializeField] float chaseSpeed = 0.9f;
     [SerializeField] float walkSpeed = 0.7f;
@@ -16,6 +18,7 @@ public class AgentDetector : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         homePosition = transform.position;
+        interactable = GetComponent<Interactable>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +33,16 @@ public class AgentDetector : MonoBehaviour {
             }
             else
             {
-                agent.SetDestination(target.transform.position);
+                if ((target.transform.position - transform.position).magnitude < interactable.stopDistance)
+                {
+                    agent.speed = 0;
+                    agent.SetDestination(transform.position);
+                }
+                else
+                {
+                    agent.speed = chaseSpeed;
+                    agent.SetDestination(target.transform.position);
+                }
             }
         }
     }

@@ -8,9 +8,8 @@ public class HandleInput: MonoBehaviour {
     public event handleInput handleInputEV;
 
     GameObject gameObj;
-    public Interactable selectedInteractable;
-    
-    Color originalColor;
+    Interactable selectedInteractable;
+    GameObject objectInFocus = null;
     
     // Use this for initialization
     void Start () {
@@ -18,11 +17,71 @@ public class HandleInput: MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        //RayCastForSingleHit();
+        RayCastForMulipleHits();
+    }
+
+    void RayCastForMulipleHits()
+    {
+        bool found = false;
+
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100, ~0, QueryTriggerInteraction.Ignore);
+
+        // Set or Remove Object in Focus
+        if (objectInFocus != null)
+        {
+            foreach (RaycastHit hit in hits)
+            {
+                if (objectInFocus == hit.collider.gameObject)
+                {
+                    objectInFocus.GetComponent<Interactable>().onFocus();
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                objectInFocus.GetComponent<Interactable>().onLostFocus();
+                objectInFocus = null;
+                found = false;
+            }
+        }
+        else
+        {
+            foreach (RaycastHit hit in hits)
+            {
+                Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    objectInFocus = hit.collider.gameObject;
+                    interactable.onGotFocus();
+                    print("StopDIst: " + interactable.stopDistance);
+                    break;
+                }
+            }
+        }
+        if (objectInFocus != null)
+        {
+            handleInputEV(objectInFocus, true);
+        }
+        else
+        {
+            if (hits.Length > 0)
+            {
+                gameObj.transform.position = hits[0].point;
+                handleInputEV(gameObj, false);
+            }
+        }
+    }
+
+    private void RayCastForSingleHit()
+    {
         Interactable currentInteractable;
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, ~0, QueryTriggerInteraction.Ignore))
         {
             currentInteractable = hit.collider.gameObject.GetComponent<Interactable>();
 
@@ -35,7 +94,7 @@ public class HandleInput: MonoBehaviour {
                 else
                 {
                     selectedInteractable = currentInteractable;
-                    selectedInteractable.onMouseEnterMe();
+                    selectedInteractable.onGotFocus();
                     handleInputEV(hit.collider.gameObject, true);
                 }
             }
@@ -43,7 +102,7 @@ public class HandleInput: MonoBehaviour {
             {
                 if (selectedInteractable != null)
                 {
-                    selectedInteractable.onMouseExitMe();
+                    selectedInteractable.onLostFocus();
                     selectedInteractable = null;
                 }
                 gameObj.transform.position = hit.point;

@@ -21,7 +21,31 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetMouseButton(0))
         {
-            agent.SetDestination(obj.transform.position);
+            //print("Obj Pos: " + obj.transform.position);
+            if (isInteractable)
+            {
+                Interactable interactable = obj.GetComponent<Interactable>();
+                var distance = obj.transform.position.magnitude;
+                var direction = obj.transform.position / distance;
+                
+                var destination = direction * (distance - interactable.stopDistance);
+                print("Dest Pos: " + destination);
+                agent.SetDestination(destination);
+            }
+            else
+            {
+                print("Dest Pos: " + obj.transform.position);
+
+                NavMeshHit hit;
+                if(NavMesh.SamplePosition(obj.transform.position, out hit, 4f, NavMesh.AllAreas))
+                {
+                    print("NavMesh Dest Pos: " + hit.position);
+
+                    agent.SetDestination(hit.position);
+                }
+                
+            }
+            
         }
     }
 }
