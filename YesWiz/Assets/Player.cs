@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class Player : MonoBehaviour {
-
+public class Player : Character {
 
     NavMeshAgent agent;
+    
     // Use this for initialization
     void Start () {
-		agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         Camera.main.GetComponent<HandleInput>().handleInputEV += receiveInput;
 	}
 	

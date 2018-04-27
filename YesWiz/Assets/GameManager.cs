@@ -18,4 +18,9 @@ public class GameManager : MonoBehaviour {
             return gm;
         }
     }
+
+    private void Start()
+    {
+        
+    }
 }

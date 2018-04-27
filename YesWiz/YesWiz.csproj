@@ -242,9 +242,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AgentDetector.cs" />
-    <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\Camera&amp;UI\CameraFollow.cs" />
+    <Compile Include="Assets\Camera&amp;UI\HandleInput.cs" />
+    <Compile Include="Assets\Character.cs" />
+    <Compile Include="Assets\Damageable.cs" />
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\HandleInput.cs" />
     <Compile Include="Assets\Interactable.cs" />
     <Compile Include="Assets\Player.cs" />
   </ItemGroup>
