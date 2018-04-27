@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e3c9bc8432a6a46bc294d9930bc156, type: 3}
-  m_Name: test
+  m_Script: {fileID: 11500000, guid: f9f1b65b88f7b134b9bd6343a9c3f71d, type: 3}
+  m_Name: Player Equipment List
   m_EditorClassIdentifier: 
-  myTest: 0
-  test: {fileID: 0}
+  bodyArmour: {fileID: 0}
+  helmet: {fileID: 0}
+  mainHandWeapon: {fileID: 11400000, guid: 1738d3a903b1a384c88e20c4846dfe30, type: 2}

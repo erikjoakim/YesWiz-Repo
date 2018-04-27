@@ -281,6 +281,8 @@ GameObject:
   - component: {fileID: 114371333462093868}
   - component: {fileID: 114064515951129244}
   - component: {fileID: 114552947261489182}
+  - component: {fileID: 114180906612316638}
+  - component: {fileID: 114185876287927834}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2506,6 +2508,39 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2
+--- !u!114 &114180906612316638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176216412584342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6284997abf3b66643a31005c91fdcb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage:
+    physicalHard: 0
+    physicalSoft: 0
+    fire: 0
+    water: 0
+    ice: 0
+    earth: 0
+    poison: 0
+  range: 0
+--- !u!114 &114185876287927834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176216412584342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56b8b6d47b8e1340a22890cf64dad1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
 --- !u!114 &114371333462093868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2549,6 +2584,8 @@ MonoBehaviour:
   maxWaterResistance: 0.75
   armour: 0.1
   evasion: 0.1
+  equipment: {fileID: 0}
+  testc: {fileID: 0}
 --- !u!136 &136893258275919036
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -18,7 +18,8 @@ public class DamageDealer : MonoBehaviour {
     }
 
     [SerializeField] DamageType baseDamage;
-    
+    //TODO This should come from Weapon
+    public float range;
 
 
     private void Start()
@@ -30,6 +31,15 @@ public class DamageDealer : MonoBehaviour {
     public void Attack(DamageReceiver damageReceiver)
     {
         dealDamage(damageReceiver);
+    }
+
+    public void Attack(GameObject gameObject)
+    {
+        DamageReceiver damageReceiver = gameObject.GetComponent<DamageReceiver>();
+        if (damageReceiver)
+        {
+            dealDamage(damageReceiver);
+        }
     }
 
     public void ApplyDebuff(DamageType damage, float intervall, float duration)

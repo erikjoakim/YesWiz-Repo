@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+[CreateAssetMenu]
 public class HandleInput: MonoBehaviour {
 
     public delegate void handleInput(GameObject obj, bool isInteractable);
@@ -9,7 +11,8 @@ public class HandleInput: MonoBehaviour {
 
     GameObject gameObj;
     Interactable selectedInteractable;
-    GameObject objectInFocus = null;
+    //TODO Make getter which is private set
+    public GameObject objectInFocus = null;
     
     // Use this for initialization
     void Start () {
@@ -57,7 +60,7 @@ public class HandleInput: MonoBehaviour {
                 {
                     objectInFocus = hit.collider.gameObject;
                     interactable.onGotFocus();
-                    print("StopDIst: " + interactable.stopDistance);
+                    Debug.Log("StopDIst: " + interactable.stopDistance);
                     break;
                 }
             }

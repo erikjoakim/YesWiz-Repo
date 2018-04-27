@@ -17,7 +17,7 @@ public class DamageReceiver : MonoBehaviour {
 
     public void ApplyDamage(DamageDealer.DamageType damage)
     {
-
+        print("Damage Receiver: DAMAGE TAKEN!! HELP!!");
         DamageDealer.DamageType dmg;
 
         if (character == null)

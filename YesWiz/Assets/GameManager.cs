@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    public HandleInput handleInput;
     private static GameManager gm;
     private GameManager() { }
-
+    
     public static GameManager GM
     {
         get 

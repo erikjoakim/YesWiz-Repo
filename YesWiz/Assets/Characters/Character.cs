@@ -32,6 +32,8 @@ public class Character : MonoBehaviour {
     public float armour = 0.1f;
     public float evasion = 0.1f;
 
+    public EquipmentList equipment;
+
     private void Start()
     {
         //TODO Init all stats based on equipment, passive and such
