@@ -245,10 +245,12 @@
     <Compile Include="Assets\Camera&amp;UI\CameraFollow.cs" />
     <Compile Include="Assets\Camera&amp;UI\HandleInput.cs" />
     <Compile Include="Assets\Character.cs" />
-    <Compile Include="Assets\Damageable.cs" />
+    <Compile Include="Assets\Characters\Player.cs" />
+    <Compile Include="Assets\Characters\TestSO.cs" />
+    <Compile Include="Assets\DamageDealer.cs" />
+    <Compile Include="Assets\DamageReceiver.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Interactable.cs" />
-    <Compile Include="Assets\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
