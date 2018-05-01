@@ -12,12 +12,22 @@ public class DamageReceiver : MonoBehaviour {
     Character character;
     private void Start()
     {
+        health = maxHealth;
         character = GetComponent<Character>();    
     }
 
+    void Update()
+    {
+
+    }
+
+    public float getHealthAsPercentage()
+    {
+        return health / maxHealth;
+    }
     public void ApplyDamage(DamageDealer.DamageType damage)
     {
-        print("Damage Receiver: DAMAGE TAKEN!! HELP!!");
+        print(this.name + " : DAMAGE TAKEN!! HELP!!");
         DamageDealer.DamageType dmg;
 
         if (character == null)
@@ -35,9 +45,9 @@ public class DamageReceiver : MonoBehaviour {
         dmg = ApplyPreDefences(damage);
         dmg = CalculateDamage(dmg);
         health -= ApplyPostDefences(dmg);
-        
+        print(this.name + " : Current Health: " + health);
         //TODO Apply defences (damage mitigation Armour) relevant for all damage types AFTER HIT
-        
+
     }
 
     private DamageDealer.DamageType ApplyPreDefences(DamageDealer.DamageType damage)
@@ -48,6 +58,7 @@ public class DamageReceiver : MonoBehaviour {
 
     private float ApplyPostDefences(DamageDealer.DamageType dmg)
     {
+        //TODO Apply any generic post-defences
         float damage;
         damage = dmg.earth + dmg.fire + dmg.ice + dmg.physicalHard + dmg.physicalSoft + dmg.poison + dmg.water;
         return damage;

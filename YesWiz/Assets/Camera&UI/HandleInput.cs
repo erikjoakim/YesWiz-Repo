@@ -23,10 +23,10 @@ public class HandleInput: MonoBehaviour {
 	void Update ()
     {
         //RayCastForSingleHit();
-        RayCastForMulipleHits();
+        RayCastForMultipleHits();
     }
 
-    void RayCastForMulipleHits()
+    void RayCastForMultipleHits()
     {
         bool found = false;
 
@@ -35,6 +35,7 @@ public class HandleInput: MonoBehaviour {
         // Set or Remove Object in Focus
         if (objectInFocus != null)
         {
+            //Object in focus found, Check if mouse is over it
             foreach (RaycastHit hit in hits)
             {
                 if (objectInFocus == hit.collider.gameObject)
@@ -44,6 +45,7 @@ public class HandleInput: MonoBehaviour {
                     break;
                 }
             }
+            //If mouse left objectInFocus, tell the object that happened
             if (!found)
             {
                 objectInFocus.GetComponent<Interactable>().onLostFocus();
@@ -53,11 +55,13 @@ public class HandleInput: MonoBehaviour {
         }
         else
         {
+            //We do not have a current ObjectInFocus
             foreach (RaycastHit hit in hits)
             {
                 Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
                 if (interactable != null)
                 {
+                    //If we hit an interactable objcet set that to the objectInFocus
                     objectInFocus = hit.collider.gameObject;
                     interactable.onGotFocus();
                     Debug.Log("StopDIst: " + interactable.stopDistance);
@@ -65,6 +69,7 @@ public class HandleInput: MonoBehaviour {
                 }
             }
         }
+        //Send a message to any subscriber wanting to know mouse position
         if (objectInFocus != null)
         {
             handleInputEV(objectInFocus, true);

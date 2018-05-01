@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Camera&amp;UI\CameraFollow.cs" />
+     <Compile Include="Assets\Camera&amp;UI\EnemyUI.cs" />
      <Compile Include="Assets\Camera&amp;UI\HandleInput.cs" />
+     <Compile Include="Assets\Camera&amp;UI\healthBar.cs" />
      <Compile Include="Assets\Characters\AgentDetector.cs" />
      <Compile Include="Assets\Characters\Armour.cs" />
      <Compile Include="Assets\Characters\Character.cs" />

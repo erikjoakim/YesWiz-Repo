@@ -6,12 +6,13 @@ public class Player : Character {
 
     NavMeshAgent agent;
     public ScriptableObject testc;
-    
+    DamageDealer damageDealer;
      
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         Camera.main.GetComponent<HandleInput>().handleInputEV += receiveInput;
+        damageDealer = GetComponent<DamageDealer>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +31,7 @@ public class Player : Character {
             if (!damageReceiver) return;
             if (equipment.mainHandWeapon.range > (objectInFocus.transform.position-transform.position).magnitude)
             {
-                print("PLAYER ATTACK!! " + damageReceiver);
+                damageDealer.Attack(objectInFocus);
             }
             
         }
@@ -46,12 +47,12 @@ public class Player : Character {
             if (isInteractable)
             {
                 Interactable interactable = obj.GetComponent<Interactable>();
-                print("Object:" + obj);
+                //print("Object:" + obj);
                 var distance = obj.transform.position.magnitude;
                 var direction = obj.transform.position / distance;
 
                 var destination = direction * (distance - interactable.stopDistance);
-                print("Dest Pos: " + destination);
+                //print("Dest Pos: " + destination);
                 agent.SetDestination(destination);
             }
             else

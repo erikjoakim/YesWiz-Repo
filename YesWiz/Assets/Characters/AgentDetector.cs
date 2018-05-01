@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
-public class AgentDetector : MonoBehaviour {
+public class AgentDetector : Character {
 
     NavMeshAgent agent;
     GameObject target;
     Vector3 homePosition;
     Interactable interactable;
     DamageDealer damageDealer;
+    DamageReceiver damageReceiver;
+    
     [SerializeField] float stopChaseDistance= 10f;
     [SerializeField] float chaseSpeed = 0.9f;
     [SerializeField] float walkSpeed = 0.7f;
@@ -19,9 +22,11 @@ public class AgentDetector : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         damageDealer = GetComponent<DamageDealer>();
+        damageReceiver = GetComponent<DamageReceiver>();
         homePosition = transform.position;
         interactable = GetComponent<Interactable>();
-	}
+       
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -30,11 +35,12 @@ public class AgentDetector : MonoBehaviour {
         
         if(damageDealer && target && (target.transform.position -transform.position).magnitude < damageDealer.range)
             Attack();
+        
     }
 
     private void Attack()
     {
-        print("Agent Detector: ATTACK!!");
+        
         damageDealer.Attack(target);
     }
 

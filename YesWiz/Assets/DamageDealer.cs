@@ -18,19 +18,28 @@ public class DamageDealer : MonoBehaviour {
     }
 
     [SerializeField] DamageType baseDamage;
+    
     //TODO This should come from Weapon
+    [SerializeField] float timeBetweenAttacks=2f;
+    float timeOfLatestAttack;
     public float range;
-
 
     private void Start()
     {
         // TODO Init damage for DamageDealer
         // TODO fill in damage based on weapon, passives and stats
+        timeOfLatestAttack = Time.time;
     }
 
     public void Attack(DamageReceiver damageReceiver)
     {
-        dealDamage(damageReceiver);
+        if (Time.time-timeOfLatestAttack > timeBetweenAttacks)
+        {
+            print(this.name + " : ATTACK!!");
+            dealDamage(damageReceiver);
+            timeOfLatestAttack = Time.time;
+        }
+        
     }
 
     public void Attack(GameObject gameObject)
@@ -38,7 +47,7 @@ public class DamageDealer : MonoBehaviour {
         DamageReceiver damageReceiver = gameObject.GetComponent<DamageReceiver>();
         if (damageReceiver)
         {
-            dealDamage(damageReceiver);
+            Attack(damageReceiver);
         }
     }
 
