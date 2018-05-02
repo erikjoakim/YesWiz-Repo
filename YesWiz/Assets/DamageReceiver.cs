@@ -74,8 +74,8 @@ public class DamageReceiver : MonoBehaviour {
 
         // TODO Physical Damage Mitigation should be large initially but reduced if substantal damage is applied 
         // or health reduced over a limited time period. Should grow back over time if not damage received.
-        dmg.physicalHard = damage.physicalHard * character.physicalDamageMitigationHard;
-        dmg.physicalSoft = damage.physicalSoft * character.physicalDamageMitigationSoft;
+        dmg.physicalHard = damage.physicalHard * (1-character.physicalDamageMitigationHard);
+        dmg.physicalSoft = damage.physicalSoft * (1-character.physicalDamageMitigationSoft);
 
         //TODO check if poison should have no damage reduction
         dmg.poison = damage.poison;

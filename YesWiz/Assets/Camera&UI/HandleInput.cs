@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu]
-public class HandleInput: MonoBehaviour {
+public class HandleInput : MonoBehaviour
+{
 
     public delegate void handleInput(GameObject obj, bool isInteractable);
     public event handleInput handleInputEV;
@@ -13,62 +14,102 @@ public class HandleInput: MonoBehaviour {
     Interactable selectedInteractable;
     //TODO Make getter which is private set
     public GameObject objectInFocus = null;
-    
+    bool objectSelected = false;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         gameObj = new GameObject("NoObject");
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         //RayCastForSingleHit();
         RayCastForMultipleHits();
     }
 
+    RaycastHit? getRaycastHit()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100, ~0, QueryTriggerInteraction.Ignore);
+        Interactable interactable = null;
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject == objectInFocus)
+            {
+                return hit;
+            }
+        }
+        foreach (RaycastHit hit in hits)
+        {
+            interactable = hit.collider.gameObject.GetComponent<Interactable>();
+            if (interactable)
+            {
+                return hit;
+            }
+        }
+        if (hits.Length > 0)
+        {
+            return hits[0];
+        }
+        return null;
+    }
+
     void RayCastForMultipleHits()
     {
-        bool found = false;
+        Interactable interactable;
+        //Return if object is selected and mouse button is down
+        RaycastHit hit;
+        RaycastHit? nullableHit = getRaycastHit();
 
-        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100, ~0, QueryTriggerInteraction.Ignore);
-
-        // Set or Remove Object in Focus
-        if (objectInFocus != null)
+        if (nullableHit == null)
         {
-            //Object in focus found, Check if mouse is over it
-            foreach (RaycastHit hit in hits)
+            return;
+        }
+        else hit = (RaycastHit)nullableHit;
+
+        if (objectInFocus && objectSelected && Input.GetMouseButton(0))
+        {
+            SendMouseEvent(hit);
+            return;
+        }
+
+
+
+        if (hit.collider.gameObject == objectInFocus)
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                if (objectInFocus == hit.collider.gameObject)
-                {
-                    objectInFocus.GetComponent<Interactable>().onFocus();
-                    found = true;
-                    break;
-                }
+                objectSelected = true;
             }
-            //If mouse left objectInFocus, tell the object that happened
-            if (!found)
-            {
-                objectInFocus.GetComponent<Interactable>().onLostFocus();
-                objectInFocus = null;
-                found = false;
-            }
+            SendMouseEvent(hit);
+            return;
         }
         else
         {
-            //We do not have a current ObjectInFocus
-            foreach (RaycastHit hit in hits)
+            if (objectInFocus)
             {
-                Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    //If we hit an interactable objcet set that to the objectInFocus
-                    objectInFocus = hit.collider.gameObject;
-                    interactable.onGotFocus();
-                    Debug.Log("StopDIst: " + interactable.stopDistance);
-                    break;
-                }
+                objectInFocus.GetComponent<Interactable>().onLostFocus();
+                objectInFocus = null;
+                objectSelected = false;
             }
         }
+        interactable = hit.collider.gameObject.GetComponent<Interactable>();
+        if (interactable)
+        {
+            interactable.onGotFocus();
+            objectInFocus = hit.collider.gameObject;
+            if (Input.GetMouseButtonDown(0))
+            {
+                objectSelected = true;
+            }
+
+        }
+        SendMouseEvent(hit);
+    }
+
+    private void SendMouseEvent(RaycastHit hit)
+    {
         //Send a message to any subscriber wanting to know mouse position
         if (objectInFocus != null)
         {
@@ -76,11 +117,8 @@ public class HandleInput: MonoBehaviour {
         }
         else
         {
-            if (hits.Length > 0)
-            {
-                gameObj.transform.position = hits[0].point;
-                handleInputEV(gameObj, false);
-            }
+            gameObj.transform.position = hit.point;
+            handleInputEV(gameObj, false);
         }
     }
 

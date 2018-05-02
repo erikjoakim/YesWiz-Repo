@@ -241,12 +241,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AgentDetector.cs" />
     <Compile Include="Assets\Camera&amp;UI\CameraFollow.cs" />
+    <Compile Include="Assets\Camera&amp;UI\EnemyUI.cs" />
     <Compile Include="Assets\Camera&amp;UI\HandleInput.cs" />
-    <Compile Include="Assets\Character.cs" />
+    <Compile Include="Assets\Camera&amp;UI\healthBar.cs" />
+    <Compile Include="Assets\Characters\AgentDetector.cs" />
+    <Compile Include="Assets\Characters\Armour.cs" />
+    <Compile Include="Assets\Characters\Character.cs" />
+    <Compile Include="Assets\Characters\EquipableItem.cs" />
+    <Compile Include="Assets\Characters\EquipmentList.cs" />
     <Compile Include="Assets\Characters\Player.cs" />
-    <Compile Include="Assets\Characters\TestSO.cs" />
+    <Compile Include="Assets\Characters\Weapon.cs" />
     <Compile Include="Assets\DamageDealer.cs" />
     <Compile Include="Assets\DamageReceiver.cs" />
     <Compile Include="Assets\GameManager.cs" />
