@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public HandleInput handleInput;
-    public static GameObject player;
+    public static Player player;
     private static GameManager gm;
     private GameManager() { }
     
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = FindObjectOfType<Player>();
     }
 }

@@ -5,14 +5,16 @@ using UnityEngine.AI;
 public class Player : Character {
 
     NavMeshAgent agent;
-    public ScriptableObject testc;
     DamageDealer damageDealer;
-     
+    DamageReceiver damageReceiver;
+    public Weapon weaponInUse; 
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         Camera.main.GetComponent<HandleInput>().handleInputEV += receiveInput;
         damageDealer = GetComponent<DamageDealer>();
+        //weaponInUse = equipment.mainHandWeapon;
+        Instantiate(weaponInUse.weaponPrefab, mainHandSocket);
 	}
 	
 	// Update is called once per frame

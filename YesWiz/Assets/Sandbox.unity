@@ -413,15 +413,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114552947261489182, guid: 1d79ce8df13359344a34643d0c318a46,
         type: 2}
-      propertyPath: equipment
+      propertyPath: weaponInUse
       value: 
-      objectReference: {fileID: 11400000, guid: 1aafb9c4f9742fa4892e68a458ccbca7,
+      objectReference: {fileID: 11400000, guid: b197f4674c4ae6b4d896c004ab748374,
         type: 2}
-    - target: {fileID: 114180906612316638, guid: 1d79ce8df13359344a34643d0c318a46,
-        type: 2}
-      propertyPath: baseDamage.physicalHard
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d79ce8df13359344a34643d0c318a46, type: 2}
   m_IsPrefabParent: 0
@@ -582,7 +577,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -789181726
+  randomSeed: 923200826
   InitialModule:
     serializedVersion: 3
     enabled: 1
