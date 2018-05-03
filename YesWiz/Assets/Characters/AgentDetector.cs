@@ -11,7 +11,6 @@ public class AgentDetector : Character {
     GameObject target;
     Vector3 homePosition;
     Interactable interactable;
-    DamageDealer damageDealer;
     DamageReceiver damageReceiver;
     [Header("Agent Detector")]
     [SerializeField] float stopChaseDistance= 10f;
@@ -22,8 +21,8 @@ public class AgentDetector : Character {
     override public void Start () {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-        damageDealer = GetComponent<DamageDealer>();
-        damageReceiver = GetComponent<DamageReceiver>();
+        //damageDealer = GetComponent<DamageDealer>();
+        //damageReceiver = GetComponent<DamageReceiver>();
         homePosition = transform.position;
         interactable = GetComponent<Interactable>();
        
@@ -34,17 +33,10 @@ public class AgentDetector : Character {
     {
         MoveToTarget();
         
-        if(damageDealer && target && (target.transform.position -transform.position).magnitude < damageDealer.range)
-            Attack();
-        
+        if(target && (target.transform.position -transform.position).magnitude < mainHandItem.range)
+            Attack(target);
     }
-
-    private void Attack()
-    {
-        
-        damageDealer.Attack(target);
-    }
-
+    
     private void MoveToTarget()
     {
         if (target != null)

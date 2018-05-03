@@ -6,28 +6,23 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour {
     
     //TODO This should come from Weapon
-    [SerializeField] float attackSpeed=2f;
-    float timeOfLatestAttack;
-    public float range;
+    
+    //public float range;
     
 
     private void Start()
     {
         // TODO Init damage for DamageDealer
         // TODO fill in damage based on weapon, passives and stats
-        timeOfLatestAttack = Time.time;
-            }
+    }
 
     public void Attack(DamageReceiver damageReceiver)
     {
-        if (Time.time-timeOfLatestAttack > 1/attackSpeed)
-        {
-            print(this.name + " : is ATTACKING : " + damageReceiver.name);
-            dealDamage(damageReceiver);
-            timeOfLatestAttack = Time.time;
-        }
+        
+        print(this.name + " : is ATTACKING : " + damageReceiver.name);
+        dealDamage(damageReceiver);
+           
     }
-
     public void Attack(GameObject gameObject)
     {
         DamageReceiver damageReceiver = gameObject.GetComponent<DamageReceiver>();
@@ -39,7 +34,7 @@ public class DamageDealer : MonoBehaviour {
 
     public void ApplyDebuff(DamageType damage, float intervall, float duration)
     {
-        DamageType debuffDamage = damage;
+        //DamageType debuffDamage = damage;
         //TODO Start Coroutine for dealing damage
     }
 
@@ -57,7 +52,7 @@ public class DamageDealer : MonoBehaviour {
         DamageType maxDamage = GetComponent<Character>().mainHandItem.maxDamage; ;
         DamageType returnDamage = new DamageType();
         returnDamage.physicalHard = UnityEngine.Random.Range(minDamage.physicalHard, maxDamage.physicalHard);
-        print("PH: " + returnDamage.physicalHard);
+        //print("PH: " + returnDamage.physicalHard);
         returnDamage.physicalSoft = UnityEngine.Random.Range(minDamage.physicalSoft, maxDamage.physicalSoft);
         returnDamage.fire = UnityEngine.Random.Range(minDamage.fire, maxDamage.fire);
         returnDamage.water = UnityEngine.Random.Range(minDamage.water, maxDamage.water);

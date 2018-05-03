@@ -67,6 +67,7 @@
      <Compile Include="Assets\Items\Weapons\Armour.cs" />
      <Compile Include="Assets\Items\Weapons\EquipableItem.cs" />
      <Compile Include="Assets\Items\Weapons\Weapon.cs" />
+     <Compile Include="Assets\Projectile.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour
+{
 
     [Header("Character")]
     public float energy = 100f;
@@ -20,6 +21,10 @@ public class Character : MonoBehaviour {
     public Weapon mainHandItem;
     //public EquipmentList equipment;
 
+    DamageDealer damageDealer;
+    Animator animator;
+    float timeOfLatestAttack;
+
     virtual public void Start()
     {
         //TODO Init all stats based on equipment, passive and such
@@ -29,8 +34,38 @@ public class Character : MonoBehaviour {
         }
         else
         {
-            mainHandItem = ((Weapon) Weapon.CreateInstance(typeof(Weapon))).InitHandWeapon(this);
+            mainHandItem = ((Weapon)Weapon.CreateInstance(typeof(Weapon))).InitHandWeapon(this);
         }
         print(mainHandItem);
+        damageDealer = GetComponent<DamageDealer>();
+        animator = GetComponent<Animator>();
+        timeOfLatestAttack = Time.time;
+    }
+
+    public void Attack(DamageReceiver target)
+    {
+        if (Time.time - timeOfLatestAttack > 1 / mainHandItem.attackSpeed)
+        {
+            if (mainHandItem.range > (target.gameObject.transform.position - transform.position).magnitude)
+            {
+                animator.speed = mainHandItem.attackSpeed;
+                animator.SetTrigger("Attack");
+                damageDealer.Attack(target);
+                timeOfLatestAttack = Time.time;
+            }
+        }
+    }
+    public void Attack(GameObject target)
+    {
+        DamageReceiver damageReceiver = target.GetComponent<DamageReceiver>();
+        if (damageReceiver)
+        {
+            Attack(damageReceiver);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+
     }
 }

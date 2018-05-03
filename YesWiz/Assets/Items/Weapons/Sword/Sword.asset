@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 2}
   weaponPrefab: {fileID: 1171686767454578, guid: c94376b29a85b584a8b16a842c877f5c,
     type: 2}
+  weaponCategory: 0
   weaponType: 2
   minDamage:
     physicalHard: 10
@@ -26,7 +27,7 @@ MonoBehaviour:
     earth: 0
     poison: 0
   maxDamage:
-    physicalHard: 10
+    physicalHard: 20
     physicalSoft: 0
     fire: 0
     water: 0
@@ -35,4 +36,5 @@ MonoBehaviour:
     poison: 0
   characterAttackAnimation: {fileID: 0}
   range: 2
+  projectileSpeed: 0
   attackSpeed: 2

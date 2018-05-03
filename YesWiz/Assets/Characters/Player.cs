@@ -5,20 +5,21 @@ using UnityEngine.AI;
 public class Player : Character {
 
     NavMeshAgent agent;
-    DamageDealer damageDealer;
+    //DamageDealer damageDealer;
     DamageReceiver damageReceiver;
+    //Animator animator;
 
     // Use this for initialization
     override public void Start () {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
         Camera.main.GetComponent<HandleInput>().handleInputEV += receiveInput;
-        damageDealer = GetComponent<DamageDealer>();
+        //damageDealer = GetComponent<DamageDealer>();
+        //animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     void receiveInput(GameObject obj, bool isInteractable)
@@ -30,10 +31,7 @@ public class Player : Character {
             if (!objectInFocus) return;
             DamageReceiver damageReceiver = objectInFocus.GetComponent<DamageReceiver>();
             if (!damageReceiver) return;
-            if (mainHandItem.range > (objectInFocus.transform.position-transform.position).magnitude)
-            {
-                damageDealer.Attack(objectInFocus);
-            }
+            Attack(damageReceiver);
             
         }
     }
@@ -63,8 +61,6 @@ public class Player : Character {
                 NavMeshHit hit;
                 if (NavMesh.SamplePosition(obj.transform.position, out hit, 4f, NavMesh.AllAreas))
                 {
-                    //print("NavMesh Dest Pos: " + hit.position);
-
                     agent.SetDestination(hit.position);
                 }
 

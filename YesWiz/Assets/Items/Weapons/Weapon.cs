@@ -5,16 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Equipment/Weapon")]
 public class Weapon : EquipableItem {
     
+    public enum WeaponCategory
+    {
+        Melee, Ranged
+    };
     public enum WeaponType
     {
         Hand, Dagger, Sword, Axe, Bow
     };
     [Header("Weapon")]
+    public WeaponCategory weaponCategory;
     public WeaponType weaponType;
     public DamageType minDamage;
     public DamageType maxDamage;
     public AnimationClip characterAttackAnimation;
     public float range;
+    public float projectileSpeed;
     public float attackSpeed; //Attacks per Second
 
     public Weapon InitHandWeapon(Character basedOnChar)

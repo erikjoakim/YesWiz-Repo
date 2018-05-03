@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4214,12 +4214,18 @@ Prefab:
         type: 2}
       propertyPath: mainHandItem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: fc2ee09ed6506d746a26d073e9642da4,
+        type: 2}
     - target: {fileID: 114522269147731672, guid: 54eb5844754051b40a918a84c33b7c1a,
         type: 2}
       propertyPath: mainHandSocket
       value: 
       objectReference: {fileID: 652888184}
+    - target: {fileID: 114522269147731672, guid: 54eb5844754051b40a918a84c33b7c1a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
   m_IsPrefabParent: 0

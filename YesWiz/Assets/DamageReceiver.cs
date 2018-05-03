@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class DamageReceiver : MonoBehaviour {
 
@@ -27,10 +28,12 @@ public class DamageReceiver : MonoBehaviour {
     public float evasion = 0.1f;
 
     Character character;
+    Animator animator;
     private void Start()
     {
         health = maxHealth;
-        character = GetComponent<Character>();    
+        character = GetComponent<Character>();
+        animator = GetComponent<Animator>();    
     }
 
     void Update()
@@ -62,9 +65,35 @@ public class DamageReceiver : MonoBehaviour {
         dmg = ApplyPreDefences(damage);
         dmg = CalculateDamage(dmg);
         health -= ApplyPostDefences(dmg);
-        print(this.name + " : Current Health: " + health);
+        if (health < 0f)
+        {
+            print(character.name + " DIE!!");
+            StartCoroutine(KillCharacter());
+        }
+        //print(this.name + " : Current Health: " + health);
         //TODO Apply defences (damage mitigation Armour) relevant for all damage types AFTER HIT
 
+    }
+
+    IEnumerator KillCharacter()
+    {
+        print(character.name + " DIE!! Again");
+        animator.SetTrigger("Death");
+        GetComponent<AgentDetector>().enabled = false;
+        GetComponent<DamageDealer>().enabled = false;
+        GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>().enabled = false;
+        //GetComponent<NavMeshAgent>().enabled = false;
+        yield return new WaitForSecondsRealtime(6);
+        print(character.name + " DIE!! Again Destroy");
+        if (gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
     private DamageType ApplyPreDefences(DamageType damage)
