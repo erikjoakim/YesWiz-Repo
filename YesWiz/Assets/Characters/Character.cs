@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
+    [Header("Character")]
     public float energy = 100f;
     public float maxEnergy = 100f;
 
@@ -16,10 +17,20 @@ public class Character : MonoBehaviour {
     public Transform mainHandSocket;
     public Transform offHandSocket;
 
-    public EquipmentList equipment;
+    public Weapon mainHandItem;
+    //public EquipmentList equipment;
 
-    private void Start()
+    virtual public void Start()
     {
         //TODO Init all stats based on equipment, passive and such
+        if (mainHandItem != null)
+        {
+            Instantiate(mainHandItem.weaponPrefab, mainHandSocket);
+        }
+        else
+        {
+            mainHandItem = ((Weapon) Weapon.CreateInstance(typeof(Weapon))).InitHandWeapon(this);
+        }
+        print(mainHandItem);
     }
 }

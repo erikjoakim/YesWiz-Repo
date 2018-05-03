@@ -246,19 +246,19 @@
     <Compile Include="Assets\Camera&amp;UI\HandleInput.cs" />
     <Compile Include="Assets\Camera&amp;UI\healthBar.cs" />
     <Compile Include="Assets\Characters\AgentDetector.cs" />
-    <Compile Include="Assets\Characters\Armour.cs" />
     <Compile Include="Assets\Characters\Character.cs" />
-    <Compile Include="Assets\Characters\EquipableItem.cs" />
     <Compile Include="Assets\Characters\EquipmentList.cs" />
     <Compile Include="Assets\Characters\Player.cs" />
-    <Compile Include="Assets\Characters\Weapon.cs" />
     <Compile Include="Assets\DamageDealer.cs" />
     <Compile Include="Assets\DamageReceiver.cs" />
+    <Compile Include="Assets\DamageType.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Interactable.cs" />
+    <Compile Include="Assets\Items\Weapons\Armour.cs" />
+    <Compile Include="Assets\Items\Weapons\EquipableItem.cs" />
+    <Compile Include="Assets\Items\Weapons\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

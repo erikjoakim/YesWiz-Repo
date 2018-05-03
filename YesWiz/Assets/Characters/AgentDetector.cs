@@ -13,13 +13,14 @@ public class AgentDetector : Character {
     Interactable interactable;
     DamageDealer damageDealer;
     DamageReceiver damageReceiver;
-    
+    [Header("Agent Detector")]
     [SerializeField] float stopChaseDistance= 10f;
     [SerializeField] float chaseSpeed = 0.9f;
     [SerializeField] float walkSpeed = 0.7f;
 
     // Use this for initialization
-    void Start () {
+    override public void Start () {
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
         damageDealer = GetComponent<DamageDealer>();
         damageReceiver = GetComponent<DamageReceiver>();

@@ -7,14 +7,13 @@ public class Player : Character {
     NavMeshAgent agent;
     DamageDealer damageDealer;
     DamageReceiver damageReceiver;
-    public Weapon weaponInUse; 
+
     // Use this for initialization
-    void Start () {
+    override public void Start () {
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
         Camera.main.GetComponent<HandleInput>().handleInputEV += receiveInput;
         damageDealer = GetComponent<DamageDealer>();
-        //weaponInUse = equipment.mainHandWeapon;
-        Instantiate(weaponInUse.weaponPrefab, mainHandSocket);
 	}
 	
 	// Update is called once per frame
@@ -31,7 +30,7 @@ public class Player : Character {
             if (!objectInFocus) return;
             DamageReceiver damageReceiver = objectInFocus.GetComponent<DamageReceiver>();
             if (!damageReceiver) return;
-            if (equipment.mainHandWeapon.range > (objectInFocus.transform.position-transform.position).magnitude)
+            if (mainHandItem.range > (objectInFocus.transform.position-transform.position).magnitude)
             {
                 damageDealer.Attack(objectInFocus);
             }

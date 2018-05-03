@@ -4,24 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageDealer : MonoBehaviour {
-
-    [Serializable]
-    public class DamageType
-    {
-        public float physicalHard;
-        public float physicalSoft;
-        public float fire;
-        public float water;
-        public float ice;
-        public float earth;
-        public float poison;
-    }
-
-    DamageType minDamage;
-    DamageType maxDamage;
     
     //TODO This should come from Weapon
-    [SerializeField] float timeBetweenAttacks=2f;
+    [SerializeField] float attackSpeed=2f;
     float timeOfLatestAttack;
     public float range;
     
@@ -30,18 +15,14 @@ public class DamageDealer : MonoBehaviour {
     {
         // TODO Init damage for DamageDealer
         // TODO fill in damage based on weapon, passives and stats
-        print("Im here");
         timeOfLatestAttack = Time.time;
-        maxDamage = GameManager.player.weaponInUse.maxDamage;
-        print("max: " + maxDamage.physicalHard);
-        minDamage = GameManager.player.weaponInUse.minDamage;
-    }
+            }
 
     public void Attack(DamageReceiver damageReceiver)
     {
-        if (Time.time-timeOfLatestAttack > timeBetweenAttacks)
+        if (Time.time-timeOfLatestAttack > 1/attackSpeed)
         {
-            print(this.name + " s: ATTACK!!: " + damageReceiver.name);
+            print(this.name + " : is ATTACKING : " + damageReceiver.name);
             dealDamage(damageReceiver);
             timeOfLatestAttack = Time.time;
         }
@@ -66,17 +47,14 @@ public class DamageDealer : MonoBehaviour {
     {
         // TODO Apply damage modifiers, such as Buffs currently running
         // TODO Think about how to set up damage dealer
-        
         DamageType tmp = drawDamage();
-        print("Draw Damage: " + tmp.physicalHard);
         damageReceiver.ApplyDamage(tmp);
-        
-        
     }
 
     DamageType drawDamage()
     {
-        
+        DamageType minDamage = GetComponent<Character>().mainHandItem.minDamage;
+        DamageType maxDamage = GetComponent<Character>().mainHandItem.maxDamage; ;
         DamageType returnDamage = new DamageType();
         returnDamage.physicalHard = UnityEngine.Random.Range(minDamage.physicalHard, maxDamage.physicalHard);
         print("PH: " + returnDamage.physicalHard);

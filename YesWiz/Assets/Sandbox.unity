@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -415,11 +415,21 @@ Prefab:
         type: 2}
       propertyPath: weaponInUse
       value: 
-      objectReference: {fileID: 11400000, guid: b197f4674c4ae6b4d896c004ab748374,
+      objectReference: {fileID: 11400000, guid: 72fecd3e17b0931439cdd183ba43e36b,
+        type: 2}
+    - target: {fileID: 114552947261489182, guid: 1d79ce8df13359344a34643d0c318a46,
+        type: 2}
+      propertyPath: mainHandItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 5980bf784f62d5b4e9d82a625a496969,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d79ce8df13359344a34643d0c318a46, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &652888184 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 428578, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
+  m_PrefabInternal: {fileID: 1793278894}
 --- !u!1 &654963443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4210,16 @@ Prefab:
       propertyPath: baseDamage.physicalHard
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114522269147731672, guid: 54eb5844754051b40a918a84c33b7c1a,
+        type: 2}
+      propertyPath: mainHandItem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114522269147731672, guid: 54eb5844754051b40a918a84c33b7c1a,
+        type: 2}
+      propertyPath: mainHandSocket
+      value: 
+      objectReference: {fileID: 652888184}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
   m_IsPrefabParent: 0

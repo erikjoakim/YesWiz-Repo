@@ -42,10 +42,10 @@ public class DamageReceiver : MonoBehaviour {
     {
         return health / maxHealth;
     }
-    public void ApplyDamage(DamageDealer.DamageType damage)
+    public void ApplyDamage(DamageType damage)
     {
         print(this.name + " : DAMAGE TAKEN!! HELP!!");
-        DamageDealer.DamageType dmg;
+        DamageType dmg;
 
         if (character == null)
         {
@@ -67,13 +67,13 @@ public class DamageReceiver : MonoBehaviour {
 
     }
 
-    private DamageDealer.DamageType ApplyPreDefences(DamageDealer.DamageType damage)
+    private DamageType ApplyPreDefences(DamageType damage)
     {
         //TODO implement evasion & Block
         return damage;
     }
 
-    private float ApplyPostDefences(DamageDealer.DamageType dmg)
+    private float ApplyPostDefences(DamageType dmg)
     {
         //TODO Apply any generic post-defences
         float damage;
@@ -81,9 +81,9 @@ public class DamageReceiver : MonoBehaviour {
         return damage;
     }
 
-    private DamageDealer.DamageType CalculateDamage(DamageDealer.DamageType damage)
+    private DamageType CalculateDamage(DamageType damage)
     {
-        DamageDealer.DamageType dmg = new DamageDealer.DamageType();
+        DamageType dmg = new DamageType();
         dmg.earth = damage.earth * Mathf.Clamp((1 - earthResistance), -100, maxEarthResistance);
         dmg.fire = damage.fire * Mathf.Clamp((1 - fireResistance), -100, maxFireResistance);
         dmg.ice = damage.ice * Mathf.Clamp((1 - iceResistance), -100, maxIceResistance);
