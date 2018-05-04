@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
 
     public Transform mainHandSocket;
     public Transform offHandSocket;
+    public Transform spawnPoint;
 
     public Weapon mainHandItem;
     //public EquipmentList equipment;
@@ -30,7 +31,11 @@ public class Character : MonoBehaviour
         //TODO Init all stats based on equipment, passive and such
         if (mainHandItem != null)
         {
-            Instantiate(mainHandItem.weaponPrefab, mainHandSocket);
+            if (mainHandItem.weaponCategory == Weapon.WeaponCategory.Melee)
+            {
+                Instantiate(mainHandItem.weaponPrefab, mainHandSocket);
+            }
+            
         }
         else
         {
@@ -48,7 +53,8 @@ public class Character : MonoBehaviour
         {
             if (mainHandItem.range > (target.gameObject.transform.position - transform.position).magnitude)
             {
-                animator.speed = mainHandItem.attackSpeed;
+                //LIKE TO INCREASE ANIMATION SPEED FOR FAST ATTACKS
+                
                 animator.SetTrigger("Attack");
                 damageDealer.Attack(target);
                 timeOfLatestAttack = Time.time;
@@ -62,10 +68,5 @@ public class Character : MonoBehaviour
         {
             Attack(damageReceiver);
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-
     }
 }

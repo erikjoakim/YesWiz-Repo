@@ -36,28 +36,42 @@ public class AgentDetector : Character {
         if(target && (target.transform.position -transform.position).magnitude < mainHandItem.range)
             Attack(target);
     }
-    
+    // TODO Implement different Emeny Behaviors ScriptableObjects, such as Ranged and Melee
+    // The below only works for Melee...
     private void MoveToTarget()
     {
-        if (target != null)
+        if (mainHandItem.weaponCategory == Weapon.WeaponCategory.Ranged)
         {
-            if ((target.transform.position - transform.position).magnitude > stopChaseDistance)
+            if (target != null)
             {
-                target = null;
-                agent.speed = walkSpeed;
-                agent.SetDestination(homePosition);
-            }
-            else
-            {
-                if ((target.transform.position - transform.position).magnitude < interactable.stopDistance)
+                if ((target.transform.position - transform.position).magnitude < mainHandItem.range)
                 {
-                    agent.speed = 0;
-                    agent.SetDestination(transform.position);
+                    Attack(target);
+                }
+            }
+        }
+        else
+        {
+            if (target != null)
+            {
+                if ((target.transform.position - transform.position).magnitude > stopChaseDistance)
+                {
+                    target = null;
+                    agent.speed = walkSpeed;
+                    agent.SetDestination(homePosition);
                 }
                 else
                 {
-                    agent.speed = chaseSpeed;
-                    agent.SetDestination(target.transform.position);
+                    if ((target.transform.position - transform.position).magnitude < interactable.stopDistance)
+                    {
+                        agent.speed = 0;
+                        agent.SetDestination(transform.position);
+                    }
+                    else
+                    {
+                        agent.speed = chaseSpeed;
+                        agent.SetDestination(target.transform.position);
+                    }
                 }
             }
         }
@@ -65,12 +79,31 @@ public class AgentDetector : Character {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag=="Player")
+        if (mainHandItem.weaponCategory == Weapon.WeaponCategory.Ranged)
         {
-            agent.speed = chaseSpeed;
-            target = other.gameObject;
-            agent.SetDestination(target.transform.position);
+            if (other.gameObject.tag == "Player")
+            {
+                target = other.gameObject;
+            }
+        }
+        else
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                agent.speed = chaseSpeed;
+                target = other.gameObject;
+                agent.SetDestination(target.transform.position);
+            }
         }
     }
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (mainHandItem.weaponCategory == Weapon.WeaponCategory.Ranged)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                target = null;
+            }
+        }
+    }
 }

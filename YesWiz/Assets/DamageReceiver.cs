@@ -79,7 +79,7 @@ public class DamageReceiver : MonoBehaviour {
     {
         print(character.name + " DIE!! Again");
         animator.SetTrigger("Death");
-        GetComponent<AgentDetector>().enabled = false;
+        //GetComponent<AgentDetector>().enabled = false;
         GetComponent<DamageDealer>().enabled = false;
         GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>().enabled = false;
         //GetComponent<NavMeshAgent>().enabled = false;

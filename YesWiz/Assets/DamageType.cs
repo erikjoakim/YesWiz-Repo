@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class DamageType {
+public class DamageType:System.Object{
 
     public float physicalHard;
     public float physicalSoft;

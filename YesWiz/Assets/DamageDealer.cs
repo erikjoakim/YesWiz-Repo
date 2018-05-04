@@ -4,25 +4,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageDealer : MonoBehaviour {
-    
-    //TODO This should come from Weapon
-    
-    //public float range;
-    
 
+    Weapon weapon;
+    Character character;
     private void Start()
     {
         // TODO Init damage for DamageDealer
         // TODO fill in damage based on weapon, passives and stats
+        character = GetComponent<Character>();
+        weapon = character.mainHandItem;
     }
 
     public void Attack(DamageReceiver damageReceiver)
     {
-        
-        print(this.name + " : is ATTACKING : " + damageReceiver.name);
-        dealDamage(damageReceiver);
-           
+        if (weapon.weaponCategory == Weapon.WeaponCategory.Ranged)
+        {
+            //SPAWN
+            print(this.name + " : is RANGE ATTACKING : " + damageReceiver.name);
+            SpawnProjectile(damageReceiver);
+
+        }
+        else
+        {
+            print(this.name + " : is MELEE ATTACKING : " + damageReceiver.name);
+            dealDamage(damageReceiver);
+        }
     }
+
+    void SpawnProjectile(DamageReceiver damageReceiver)
+    {
+        GameObject projectile =Instantiate(weapon.weaponPrefab, character.spawnPoint);
+        
+        Projectile proj = projectile.GetComponent<Projectile>();
+        proj.damage = drawDamage();
+        projectile.transform.LookAt(damageReceiver.gameObject.transform);
+        print("Spawn Damage: " + proj.damage.physicalHard);
+        proj.liveForSeconds = weapon.range / weapon.projectileSpeed;
+        Vector3 direction = (damageReceiver.gameObject.transform.position + new Vector3(0, 0.5f, 0)- character.spawnPoint.position).normalized;
+        Rigidbody rigidbody = projectile.GetComponent<Rigidbody>();
+        rigidbody.velocity = direction * weapon.projectileSpeed;
+    }
+
     public void Attack(GameObject gameObject)
     {
         DamageReceiver damageReceiver = gameObject.GetComponent<DamageReceiver>();
@@ -48,8 +70,8 @@ public class DamageDealer : MonoBehaviour {
 
     DamageType drawDamage()
     {
-        DamageType minDamage = GetComponent<Character>().mainHandItem.minDamage;
-        DamageType maxDamage = GetComponent<Character>().mainHandItem.maxDamage; ;
+        DamageType minDamage = weapon.minDamage;
+        DamageType maxDamage = weapon.maxDamage; ;
         DamageType returnDamage = new DamageType();
         returnDamage.physicalHard = UnityEngine.Random.Range(minDamage.physicalHard, maxDamage.physicalHard);
         //print("PH: " + returnDamage.physicalHard);
