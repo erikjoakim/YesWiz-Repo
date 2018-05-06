@@ -45,9 +45,10 @@ public class DamageReceiver : MonoBehaviour {
     {
         return health / maxHealth;
     }
-    public void ApplyDamage(DamageType damage)
+
+    public void ApplyDamage(DamageType damage) //TODO Send in Attacker so can be stopped when death
     {
-        print(this.name + " : DAMAGE TAKEN!! HELP!!");
+        //print(this.name + " : DAMAGE TAKEN!! HELP!!");
         DamageType dmg;
 
         if (character == null)
@@ -67,7 +68,10 @@ public class DamageReceiver : MonoBehaviour {
         health -= ApplyPostDefences(dmg);
         if (health < 0f)
         {
-            print(character.name + " DIE!!");
+            //print(character.name + " DIE!!");
+            animator.SetTrigger("Death");
+            GetComponent<DamageDealer>().enabled = false;
+            GetComponent<NavMeshAgent>().isStopped = true;
             StartCoroutine(KillCharacter());
         }
         //print(this.name + " : Current Health: " + health);
@@ -77,12 +81,6 @@ public class DamageReceiver : MonoBehaviour {
 
     IEnumerator KillCharacter()
     {
-        print(character.name + " DIE!! Again");
-        animator.SetTrigger("Death");
-        //GetComponent<AgentDetector>().enabled = false;
-        GetComponent<DamageDealer>().enabled = false;
-        GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>().enabled = false;
-        //GetComponent<NavMeshAgent>().enabled = false;
         yield return new WaitForSecondsRealtime(6);
         print(character.name + " DIE!! Again Destroy");
         if (gameObject.tag == "Player")
@@ -112,7 +110,7 @@ public class DamageReceiver : MonoBehaviour {
 
     private DamageType CalculateDamage(DamageType damage)
     {
-        DamageType dmg = new DamageType();
+        DamageType dmg = new DamageType(0);
         dmg.earth = damage.earth * Mathf.Clamp((1 - earthResistance), -100, maxEarthResistance);
         dmg.fire = damage.fire * Mathf.Clamp((1 - fireResistance), -100, maxFireResistance);
         dmg.ice = damage.ice * Mathf.Clamp((1 - iceResistance), -100, maxIceResistance);

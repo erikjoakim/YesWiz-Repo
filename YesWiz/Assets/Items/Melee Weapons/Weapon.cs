@@ -34,7 +34,7 @@ public class Weapon : EquipableItem {
     }
     private void Awake()
     {
-        minDamage = new DamageType();
-        maxDamage = new DamageType();
+        //minDamage = new DamageType();
+        //maxDamage = new DamageType();
     }
 }

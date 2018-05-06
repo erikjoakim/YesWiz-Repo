@@ -14,8 +14,8 @@ public class healthBar : MonoBehaviour {
         cameraToLookAt = Camera.main;
         damageReceiver = gameObject.GetComponentInParent<DamageReceiver>();
         healthImage = GetComponent<Image>();
-        print(damageReceiver);
-        print(healthImage);
+        //print(damageReceiver);
+        //print(healthImage);
     }
 	
 	// Update is called once per frame

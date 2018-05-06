@@ -46,6 +46,7 @@ public class AgentDetector : Character {
             {
                 if ((target.transform.position - transform.position).magnitude < mainHandItem.range)
                 {
+                    transform.LookAt(target.transform);
                     Attack(target);
                 }
             }

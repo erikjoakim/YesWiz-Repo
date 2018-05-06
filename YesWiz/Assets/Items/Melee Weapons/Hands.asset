@@ -14,6 +14,7 @@ MonoBehaviour:
   inventoryPicture: {fileID: 0}
   gripTransform: {fileID: 0}
   weaponPrefab: {fileID: 0}
+  weaponCategory: 0
   weaponType: 0
   minDamage:
     physicalHard: 0
@@ -33,3 +34,5 @@ MonoBehaviour:
     poison: 0
   characterAttackAnimation: {fileID: 0}
   range: 3
+  projectileSpeed: 0
+  attackSpeed: 1

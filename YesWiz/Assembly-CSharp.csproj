@@ -64,9 +64,11 @@
      <Compile Include="Assets\DamageType.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Interactable.cs" />
-     <Compile Include="Assets\Items\Weapons\Armour.cs" />
-     <Compile Include="Assets\Items\Weapons\EquipableItem.cs" />
-     <Compile Include="Assets\Items\Weapons\Weapon.cs" />
+     <Compile Include="Assets\Items\Melee Weapons\Armour.cs" />
+     <Compile Include="Assets\Items\Melee Weapons\EquipableItem.cs" />
+     <Compile Include="Assets\Items\Melee Weapons\Weapon.cs" />
+     <Compile Include="Assets\Items\Melee Weapons\WeaponDrawer.cs" />
+     <Compile Include="Assets\PlayerHealthOrb.cs" />
      <Compile Include="Assets\Projectile.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

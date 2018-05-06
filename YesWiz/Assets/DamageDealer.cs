@@ -33,14 +33,20 @@ public class DamageDealer : MonoBehaviour {
 
     void SpawnProjectile(DamageReceiver damageReceiver)
     {
-        GameObject projectile =Instantiate(weapon.weaponPrefab, character.spawnPoint);
+        GameObject projectile =Instantiate(weapon.weaponPrefab, character.spawnPoint.position,Quaternion.identity);
         
         Projectile proj = projectile.GetComponent<Projectile>();
+        Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), projectile.GetComponent<CapsuleCollider>(), true);
         proj.damage = drawDamage();
         projectile.transform.LookAt(damageReceiver.gameObject.transform);
         print("Spawn Damage: " + proj.damage.physicalHard);
         proj.liveForSeconds = weapon.range / weapon.projectileSpeed;
-        Vector3 direction = (damageReceiver.gameObject.transform.position + new Vector3(0, 0.5f, 0)- character.spawnPoint.position).normalized;
+        Vector3 direction = (damageReceiver.gameObject.transform.position + new Vector3(0,0.5f,0)- character.spawnPoint.position).normalized;
+        //direction = transform.InverseTransformDirection(direction);
+        print("DamageReceiver: " + damageReceiver.gameObject.transform.position);
+        print("SpawnPoint: " + character.spawnPoint.position);
+        print("Direction: " + direction);
+        print("velocity: " + direction * weapon.projectileSpeed);
         Rigidbody rigidbody = projectile.GetComponent<Rigidbody>();
         rigidbody.velocity = direction * weapon.projectileSpeed;
     }
@@ -72,7 +78,7 @@ public class DamageDealer : MonoBehaviour {
     {
         DamageType minDamage = weapon.minDamage;
         DamageType maxDamage = weapon.maxDamage; ;
-        DamageType returnDamage = new DamageType();
+        DamageType returnDamage = new DamageType(0);
         returnDamage.physicalHard = UnityEngine.Random.Range(minDamage.physicalHard, maxDamage.physicalHard);
         //print("PH: " + returnDamage.physicalHard);
         returnDamage.physicalSoft = UnityEngine.Random.Range(minDamage.physicalSoft, maxDamage.physicalSoft);

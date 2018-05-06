@@ -41,7 +41,7 @@ public class Character : MonoBehaviour
         {
             mainHandItem = ((Weapon)Weapon.CreateInstance(typeof(Weapon))).InitHandWeapon(this);
         }
-        print(mainHandItem);
+        //print(mainHandItem);
         damageDealer = GetComponent<DamageDealer>();
         animator = GetComponent<Animator>();
         timeOfLatestAttack = Time.time;

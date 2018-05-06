@@ -13,7 +13,7 @@ public class DamageType:System.Object{
     public float earth;
     public float poison;
 
-    public DamageType()
+   /* public DamageType()
     {
         physicalHard = 0;
         physicalSoft=0;
@@ -22,7 +22,7 @@ public class DamageType:System.Object{
         ice=0;
         earth=0;
         poison=0;
-}
+}*/
     public DamageType(float physicalHard)
     {
         this.physicalHard = physicalHard;
