@@ -2503,7 +2503,6 @@ MonoBehaviour:
   m_MovingTurnSpeed: 3600
   m_StationaryTurnSpeed: 1800
   m_JumpPower: 6
-  m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
@@ -2519,16 +2518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6284997abf3b66643a31005c91fdcb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage:
-    physicalHard: 20
-    physicalSoft: 0
-    fire: 0
-    water: 0
-    ice: 0
-    earth: 0
-    poison: 0
-  timeBetweenAttacks: 0.5
-  range: 0
 --- !u!114 &114185876287927834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2579,6 +2568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e3250f7e768a0408ac72f01a35225c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 2
+  interactionTransform: {fileID: 4868223182170514}
   energy: 100
   maxEnergy: 100
   level: 1
@@ -2587,7 +2578,11 @@ MonoBehaviour:
   agility: 10
   mainHandSocket: {fileID: 4072848947136010}
   offHandSocket: {fileID: 4476339642737326}
-  equipment: {fileID: 11400000, guid: 1aafb9c4f9742fa4892e68a458ccbca7, type: 2}
+  spawnPoint: {fileID: 0}
+  mainHandItem: {fileID: 0}
+  movementMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &136893258275919036
 CapsuleCollider:
   m_ObjectHideFlags: 1

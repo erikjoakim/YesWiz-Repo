@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class AgentDetector : Character {
 
     NavMeshAgent agent;
-    GameObject target;
+    public GameObject target;
     Vector3 homePosition;
     Interactable interactable;
     DamageReceiver damageReceiver;
@@ -36,6 +36,7 @@ public class AgentDetector : Character {
         if(target && (target.transform.position -transform.position).magnitude < mainHandItem.range)
             Attack(target);
     }
+
     // TODO Implement different Emeny Behaviors ScriptableObjects, such as Ranged and Melee
     // The below only works for Melee...
     private void MoveToTarget()
@@ -63,7 +64,7 @@ public class AgentDetector : Character {
                 }
                 else
                 {
-                    if ((target.transform.position - transform.position).magnitude < interactable.stopDistance)
+                    if ((target.transform.position - transform.position).magnitude < interactable.radius)
                     {
                         agent.speed = 0;
                         agent.SetDestination(transform.position);

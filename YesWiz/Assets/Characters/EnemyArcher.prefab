@@ -1139,7 +1139,6 @@ GameObject:
   - component: {fileID: 114033315064223892}
   - component: {fileID: 114791845335503008}
   - component: {fileID: 135804325231604366}
-  - component: {fileID: 114972150257169398}
   - component: {fileID: 114629515486137012}
   - component: {fileID: 114255221549146916}
   - component: {fileID: 114435774600496820}
@@ -1474,8 +1473,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1881831109931544}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.8250799, y: -2.8483983e-18, z: 12.828045}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 13.23, y: 0, z: 10.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506749261111226}
@@ -1493,7 +1492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700279948584186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.094, z: 0.42}
+  m_LocalPosition: {x: 0, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101084217912146}
@@ -2014,7 +2013,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200186354472094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.13, y: 0.85, z: -12.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4101084217912146}
@@ -2550,6 +2549,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114033315064223892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2624,6 +2624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb03d4e161360cf46abbb7e96600d60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  interactionTransform: {fileID: 4101084217912146}
   energy: 100
   maxEnergy: 100
   level: 1
@@ -2634,6 +2636,7 @@ MonoBehaviour:
   offHandSocket: {fileID: 0}
   spawnPoint: {fileID: 4114138885294840}
   mainHandItem: {fileID: 11400000, guid: a97a572db3e55324eb42222216bfa7a0, type: 2}
+  target: {fileID: 0}
   stopChaseDistance: 10
   chaseSpeed: 0.9
   walkSpeed: 0.7
@@ -2655,18 +2658,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 0.7
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2
---- !u!114 &114972150257169398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881831109931544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7971199c70318434bb3a7220bf51695e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopDistance: 1
 --- !u!135 &135804325231604366
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2705,6 +2696,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 621e901dcf5ebaf46bce29d18f67194c, type: 2}
   m_StaticBatchInfo:
@@ -2763,6 +2755,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 4f419b4a7e5215e49b729f69148c3ce2, type: 2}
   m_StaticBatchInfo:

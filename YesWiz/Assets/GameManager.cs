@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public HandleInput handleInput;
     public static Player player;
+    [SerializeField] Text StatusText;
 
     private static GameManager gm;
     private GameManager() { }
-
-    Text UIText;
 
     public static GameManager GM
     {
@@ -27,11 +25,10 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        UIText = FindObjectOfType<Text>();
+        
         player = FindObjectOfType<Player>();
-        UIText.text = "GM: Player: " + player + "\n";
-        UIText.text += "GM: UIText: " + UIText + "\n";
-        print("GM: Player: " + player);
-        print("GM: UIText: " + UIText);
+        StatusText.text = "GM: Player: " + player + "\n";
+        StatusText.text += "GM: UIText: " + StatusText + "\n";
+        
     }
 }

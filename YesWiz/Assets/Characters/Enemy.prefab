@@ -854,7 +854,6 @@ GameObject:
   - component: {fileID: 114811844685328182}
   - component: {fileID: 114294040378013460}
   - component: {fileID: 135526425294229512}
-  - component: {fileID: 114413606617264360}
   - component: {fileID: 114195553842289188}
   - component: {fileID: 114131521445138752}
   - component: {fileID: 114317829428364844}
@@ -2423,8 +2422,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605982825080818}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.8250799, y: -2.8483983e-18, z: 12.828045}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 15.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4571202110636226}
@@ -2550,6 +2549,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114131521445138752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2572,6 +2572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb03d4e161360cf46abbb7e96600d60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  interactionTransform: {fileID: 4931701740209084}
   energy: 100
   maxEnergy: 100
   level: 1
@@ -2581,7 +2583,8 @@ MonoBehaviour:
   mainHandSocket: {fileID: 4323419892506058}
   offHandSocket: {fileID: 0}
   spawnPoint: {fileID: 4869878952592778}
-  mainHandItem: {fileID: 11400000, guid: 5980bf784f62d5b4e9d82a625a496969, type: 2}
+  mainHandItem: {fileID: 11400000, guid: e2aaae9189417f94097454c9bc428e77, type: 2}
+  target: {fileID: 0}
   stopChaseDistance: 10
   chaseSpeed: 0.9
   walkSpeed: 0.7
@@ -2599,7 +2602,6 @@ MonoBehaviour:
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
   m_JumpPower: 6
-  m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 0.7
   m_AnimSpeedMultiplier: 1
@@ -2631,18 +2633,6 @@ MonoBehaviour:
   maxWaterResistance: 0.75
   armour: 0.1
   evasion: 0.1
---- !u!114 &114413606617264360
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1605982825080818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7971199c70318434bb3a7220bf51695e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopDistance: 1
 --- !u!114 &114425098873401550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2706,6 +2696,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 4f419b4a7e5215e49b729f69148c3ce2, type: 2}
   m_StaticBatchInfo:
@@ -2822,6 +2813,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 621e901dcf5ebaf46bce29d18f67194c, type: 2}
   m_StaticBatchInfo:
